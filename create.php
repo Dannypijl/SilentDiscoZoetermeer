@@ -77,7 +77,7 @@ if (isset($_POST['submit'])) {
         </div>
         <button type="submit" class="btn btn-primary" name="submit">Submit</button>
     </form>
-    <a class="button mt-4" href="index.php">&laquo; Go back to the list</a>
+    <a class="button mt-4" href="index.php">&laquo; Go back to home</a>
 </div>
 </body>
 </html>

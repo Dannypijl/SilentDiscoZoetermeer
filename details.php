@@ -5,7 +5,7 @@ require_once "includes/connection.php";
 
 //If the ID isn't given, redirect to the homepage
 if (!isset($_GET['id']) || $_GET['id'] === '') {
-    header('Location: index.php');
+    header('Location: dashboard.php');
     exit;
 }
 
@@ -18,7 +18,7 @@ $result = mysqli_query($db, $query);
 
 //If the album doesn't exist, redirect back to the homepage
 if (mysqli_num_rows($result) == 0) {
-    header('Location: index.php');
+    header('Location: dashboard.php');
     exit;
 }
 
@@ -49,7 +49,7 @@ mysqli_close($db);
         </ul>
     </section>
     <div>
-        <a class="button" href="index.php">Go back to the list</a>
+        <a class="button" href="dashboard.php">Go back to the list</a>
     </div>
 </div>
 </body>

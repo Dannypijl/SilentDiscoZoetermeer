@@ -9,7 +9,7 @@ if (isset($_GET['id'])){
 
     if (mysqli_query($db, $query)) {
         mysqli_close($db);
-        header("Location: index.php");
+        header("Location: dashboard.php");
         exit();
     } else {
         $error['database'] = "ERROR: Could not connect... "
