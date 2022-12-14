@@ -40,20 +40,6 @@ mysqli_close($db);
     <title>Details - <?= $appointment['firstname'], $appointment['lastname'] ?></title>
 </head>
 <body>
-<div class="container px-4">
-    <h1 class="title mt-4"><?= $appointment['firstname'] ?> <?= $appointment['lastname'] ?></h1>
-    <section class="content">
-        <ul>
-            <li>Amount: <?= $appointment['amount'] ?></li>
-            <li>Address: <?= $appointment['address'] ?></li>
-            <li>Date: <?= $appointment['date'] ?></li>
-        </ul>
-    </section>
-    <div>
-        <a class="button" href="dashboard.php">Go back to the list</a>
-    </div>
-</div>
-<div class="container-md">
     <div class="card text-center">
         <div class="card-header">
             Featured
@@ -71,7 +57,6 @@ mysqli_close($db);
             2 days ago
         </div>
     </div>
-</div>
 
 </body>
 </html>
