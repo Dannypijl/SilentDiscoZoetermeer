@@ -20,7 +20,7 @@
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
                 <a class="nav-link" href="#">Features</a>
                 <a class="nav-link" href="dashboard.php">Dashboard</a>
-                <a class="btn btn-primary" href="create.php" role="button">Add reservation</a>
+                <a class="btn btn-primary" href="create.php" role="button">Make reservation</a>
             </div>
         </div>
     </div>
