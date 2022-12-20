@@ -25,5 +25,4 @@
         </div>
     </div>
 </nav>
-<h1>jou zus</h1>
 </body>
