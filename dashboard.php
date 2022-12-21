@@ -2,6 +2,8 @@
 
 // Setup connection with database
 require_once 'includes/connection.php';
+require_once 'includes/secure.php';
+
 
 $query = "SELECT * FROM appointments";
 // Stap 4: Query uitvoeren op de database. Als dit goed gaat, geeft

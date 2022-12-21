@@ -1,0 +1,15 @@
+.navbar.navbar-expand-lg.navbar-dark.bg-dark {
+    background-color: #9A75F0 !important;
+}
+.nav-item, .nav-link{
+    color: white !important;
+}
+.nav-item:hover, .nav-link:hover{
+    color: #8D7AB8!important;
+}
+.navbar-brand{
+    margin-left: 20px;
+}
+.ml-auto{
+    margin-right: 20px;
+}
