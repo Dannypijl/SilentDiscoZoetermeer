@@ -3,6 +3,32 @@
 /** @var $db */
 require_once "includes/connection.php";
 
+if (isset($_POST['submit'])) {
+
+
+    //Postback with the data showed to the user, first retrieve data from 'Super global'
+    $amount  = $_POST['amount'];
+    $address   = $_POST['address'];
+    $date = $_POST['date'];
+
+    //Require the form validation handling
+    if (empty($errors)) {
+        //Require database in this file & image helpers
+        require_once "includes/connection.php";
+        /** @var mysqli $db */
+        //Save the record to the database
+        $query = "UPDATE `appointments` SET `amount`='$amount', `address`='$address', `date`='$date' WHERE `id`='{$_GET['id']}'";
+        $result = mysqli_query($db, $query)or die('Error: '.mysqli_error($db). ' with query ' . $query);
+
+        //Close connection
+        mysqli_close($db);
+
+        // Redirect to index.php
+        header('Location: details.php?id=' . $_GET["id"]);
+        exit;
+    }
+}
+
 //If the ID isn't given, redirect to the homepage
 if (!isset($_GET['id']) || $_GET['id'] === '') {
     header('Location: dashboard.php');
@@ -28,6 +54,7 @@ $appointment = mysqli_fetch_assoc($result);
 //Close connection
 mysqli_close($db);
 ?>
+</html>
 <!doctype html>
 <html lang="en">
 <head>
@@ -35,29 +62,83 @@ mysqli_close($db);
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <title>Details - <?= $appointment['firstname'], $appointment['lastname'] ?></title>
+    <title>Registreren</title>
 </head>
 <body>
-    <div class="card text-center">
-        <div class="card-header">
-            Featured
-        </div>
-        <div class="card-body">
-            <h1 class="title mt-4"><?= $appointment['firstname'] ?> <?= $appointment['lastname'] ?></h1>
-            <ul>
-                <li>Amount: <?= $appointment['amount'] ?></li>
-                <li>Address: <?= $appointment['address'] ?></li>
-                <li>Date: <?= $appointment['date'] ?></li>
-            </ul>
-            <a href="dashboard.php" class="btn btn-primary">Go back to Dashboard</a>
-        </div>
-        <div class="card-footer text-muted">
-            2 days ago
-        </div>
-    </div>
 
+<section class="section">
+    <div class="container content">
+        <h2 class="title mt-4"><?= $appointment['firstname'] ?> <?= $appointment['lastname'] ?></h2>
+
+        <div class="notification is-success mt-2" id="alert" style="display: none;">
+            Opgeslagen
+        </div>
+
+        <section class="columns">
+            <form class="column is-6" action="" method="post">
+
+
+                <!-- Amount -->
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label" for="text">Amount</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control has-icons-left">
+                                <input class="input" id="amount" type="text" name="amount" value="<?= $appointment['amount'] ?>" onchange="document.getElementById('alert').style.display='block'" />
+                                <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Address -->
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label" for="text">Address</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control has-icons-left">
+                                <input class="input" id="adress" type="text" name="address" value="<?= $appointment['address'] ?>" onchange="document.getElementById('alert').style.display='block'" />
+                                <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- date -->
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label" for="date">Datum</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control has-icons-left">
+                                <input class="input" id="date" type="text" name="date" value="<?= $appointment['date'] ?>" onchange="document.getElementById('alert').style.display='block'" />
+                                <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit -->
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal"></div>
+                    <div class="field-body">
+                        <button class="button is-link is-fullwidth" type="submit" name="submit">Pas aan</button>
+                    </div>
+                </div>
+
+            </form>
+        </section>
+
+    </div>
+    <a href="dashboard.php" class="btn btn-primary">Go back to Dashboard</a>
+</section>
 </body>
 </html>
 

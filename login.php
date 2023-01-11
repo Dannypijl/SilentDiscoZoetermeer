@@ -70,6 +70,9 @@ if (isset($_POST['submit'])) {
     <title>Log in</title>
 </head>
 <body>
+<?php
+require_once 'includes/header.php'
+?>
 <section class="section">
     <div class="container content">
         <h2 class="title">Log in</h2>

@@ -43,6 +43,9 @@ if (isset($_POST['submit'])) {
     <title> - Create</title>
 </head>
 <body>
+<?php
+require_once 'includes/header.php'
+?>
 <div class="container px-4">
 
 

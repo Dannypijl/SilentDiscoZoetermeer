@@ -32,8 +32,6 @@
             <p>Copyright © 2022 SilentDiscoatHome. All rights reserved</p>
         </div>
     </section>
-    <!-- End Footer -->
-    <script src="js/apps.js"></script>
 </footer>
 </body>
 </html>
