@@ -72,7 +72,7 @@ mysqli_close($db);
     <div class="container content">
         <h2 class="title mt-4"><?= $appointment['firstname'] ?> <?= $appointment['lastname'] ?></h2>
 
-        <div class="notification is-success mt-2" id="alert" style="display: none;">
+        <div class="notification is-success mt-2" id="alert" style="display: none">
             Opgeslagen
         </div>
 
